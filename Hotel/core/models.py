@@ -33,7 +33,7 @@ class PostModel(models.Model):
 
 
     def get_absolute_url(self):
-        return reverse("home")
+        return reverse("index")
 
     def get_delete (self,*args,**options):
         PostModel.objects.filter(Posting_delete__lte=datetime.Now()-timedelta(minets=1)).delete()

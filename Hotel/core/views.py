@@ -20,7 +20,7 @@ from datetime import timedelta , datetime
 
 class HomeView(generic.TemplateView):
     model = PostModel
-    template_name = 'core/home.html'
+    template_name = 'core/index.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -69,7 +69,7 @@ class AddPost(generic.CreateView):
     model: PostModel
     form_class= PostForm
     template_name= 'core/add_post.html'
-    reverse_lazy= 'home/'
+    reverse_lazy= 'index/'
 
     def form_valid(self, form):
         form.instance.created_by = self.request.user
@@ -111,7 +111,7 @@ class UpdatePost(generic.UpdateView):
 
 class DeletePost(generic.DeleteView):
     model = PostModel
-    success_url= reverse_lazy('home')
+    success_url= reverse_lazy('index')
     template_name= 'core/delete_post.html'
 
     # form_class = PostForm 
@@ -121,7 +121,7 @@ class CommentView(generic.CreateView):
     model= CommentModel 
     form_class = CommentForm
     template_name= 'core/comment.html' 
-    success_url= reverse_lazy('home') 
+    success_url= reverse_lazy('index') 
 
     def form_valid(self, form):
         form.instance.pro_id= self.kwargs['pk']

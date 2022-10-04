@@ -5,7 +5,7 @@ from core.views import AddPost,PostDetail,HomeView,UpdatePost,CommentView
 
 urlpatterns = [
     # path('',views.home,name='home'),
-    path('',views.HomeView.as_view(),name='home'),
+    path('',views.HomeView.as_view(),name='index'),
     path('about/',views.about,name='about'),
     path('team/',views.team,name='team'),
     # path('add_post/',views.add_post,name='add_post'),
