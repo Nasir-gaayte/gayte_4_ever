@@ -1,0 +1,16 @@
+{% extends "core/home.html" %}
+{% load  crispy_forms_tags %}
+{% block title %}Updat Post{% endblock title %}
+{% block content %}
+<div style="margin-top: 150px;">
+    <div class="container">
+        <form method="POST" enctype="multipart/form-data" >
+            {% csrf_token %}
+            {{form.media}}
+            {{form|crispy}}
+            <button type="submit" class="btn btn-outline-success">Post</button>
+        </form>
+    </div>
+</div>
+  
+{% endblock content %}

@@ -1,0 +1,21 @@
+{% extends "core/home.html" %}
+{% load  crispy_forms_tags %}
+{% block title %}Delete The Post{% endblock title %}
+{% block content %}
+<div style="margin-top: 150px;">
+    <div class="container">
+        {% if user.is_authenticated %}
+        <form method="POST">
+            <h1>{{object.title|upper}}</h1> <br>
+            <img src="{{object.head_image.url}}">
+            {% csrf_token %}
+            <h1><span>Did you conferm to delete this post </span></h1>
+            <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+        {% else %}
+        <h1>You Have to login </h1>
+        {% endif %}
+    </div>
+</div>
+  
+{% endblock content %}

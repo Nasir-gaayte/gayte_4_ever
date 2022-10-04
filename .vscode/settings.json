@@ -1,0 +1,32 @@
+{
+    "emmet.preferences": {
+
+    
+    },
+    "emmet.syntaxProfiles": {
+    
+    },
+    "emmet.triggerExpansionOnTab": true,
+    "html.format.unformatted": "",
+
+    "terminal.integrated.rendererType": "dom",
+    "liveServer.settings.donotVerifyTags": true,
+    "liveServer.settings.donotShowInfoMsg": true,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+   
+    "C_Cpp.updateChannel": "Insiders",
+    "grunt.autoDetect": "on",
+    "files.associations": {
+        "*.html": "django-html"
+    },
+    
+    "emmet.includeLanguages": {"django-html": "html"},
+    
+    "[django-html]": {
+        "editor.quickSuggestions": {
+            "other": true,
+            "comments": true,
+            "strings": true
+        }
+    }
+}    

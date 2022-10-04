@@ -1,0 +1,30 @@
+{% extends "core/home.html" %}
+{% block title %}DETAILS{% endblock title %}
+{% block content %}
+
+<div style="margin-top: 150px;">
+    <div class="container">
+        
+        {{post.title|title|upper}} 
+        <br> py{{post.user}}
+        <small>{{post.postdate}}</small>
+        <div style="height: 90vh;">
+        <img style="max-width: 100%; max-height: 100%;" src="{{post.head_image.url}}"> <hr>
+        {{post.text|safe}} <br> <br>
+        <button type="submit" class="btn btn-outline-success"><a href="{% url 'comment' post.id %}">Comment ....</a></button><br>
+        {% if not post.comments.all %}
+        no comments..
+        {% else %}
+            {% for comment in post.comments.all %}
+                {{comment.name}}--{{comment.comm|safe}} <br> ----- <br>
+            {% endfor %}
+        {% endif %}
+         <hr> 
+         {% if user.is_authenticated %}
+         <button type="submit" class="btn btn-outline-success"><a href="{% url 'update_post' post.id %}">Update</a></button>
+         <button type="submit" class="btn btn-outline-danger"><a href="{% url 'delete_post' post.id %}">Delete</a></button>
+         {%endif%}
+    </div>
+</div>
+  
+{% endblock content %}

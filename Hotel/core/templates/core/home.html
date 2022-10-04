@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static '/css/style.css' %}">
+  <!-- CSS only -->
+  <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap" rel="stylesheet">
+  
+  <title>
+    {% block title %}HOME{% endblock title %}
+  </title>
+  
+</head>
+
+<body id="boody"  class="bg-image " 
+style=" 
+background: url('static/images/g5.jpeg');
+mask-repeat: no-repeat; 
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+position: static;
+background-color: #4be7ab;">
+  <header>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top mask-custom shadow-0">
+      <div class="container">
+        <a class="navbar-brand" href="{% url 'home' %}"><span style="color: #fc9c1f;"><h3 style="font-family:'Bungee Spice', cursive">GAAYTE HOTEL</h3></span><span
+            style="color: rgba(255, 38, 38, 0.822);">All The Joys</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto">
+            
+            <li class="nav-item">
+              <a class="nav-link" href="#!">Features</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#!">Portfolio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#!">Category</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'about' %}">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'team' %}">Team</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#!">Contact</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav d-flex flex-row">
+            {% if user.is_authenticated %}
+            <li class="nav-item me-3 me-lg-0">
+              <a class="nav-link" href="{% url 'logout' %}">
+                <i class="fas fa-shopping-cart">logout</i>
+              </a>
+              {% else %}
+            </li>
+            <li class="nav-item me-3 me-lg-0">
+              <a class="nav-link" href="{% url 'login' %}">
+                <i class="fas fa-shopping-cart">login</i>
+              </a>
+            </li>
+            {% endif  %}
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Navbar -->
+
+    <!--Section: Design Block-->
+    <section>
+      <!-- Intro -->
+      <div >
+        <div class="mask" style="background-color: rgba(216, 100, 65, 0.488);"></div>
+      </div>
+      <!-- Intro -->
+    </section>
+    <!--Section: Design Block-->
+  </header>
+  <!-- <script src="{% static 'js/bootstrip.js' %}"></script> -->
+  <!-- JavaScript Bundle with Popper -->
+ 
+  <script src="{% static 'js/bootstrap.min.js'%}" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
+  {% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="container col-2 col-md-2 toside"  style="margin-top: 100px; 
+      height: 790px;
+      {% comment %} background-color: #7fffd4; {% endcomment %}
+      mask-repeat:no-repeat ;
+      justify-self: center;">
+        <div class="col mt-3 " >
+          <div class="row" style="align-items:center
+          background-color:wight;">
+            <span>Xayaysiiska wac <br> tel:xxxx-xx-xxxxxxx </span>
+            
+            </div>
+          <div class="row" style="align-items:center">
+          <img src="{% static 'images/logo.jpeg' %}" >
+          jest to add 
+          </div>
+          <div class="row" >
+          <img src="/media/images/hg1.gif" >
+          jest to add 
+          </div>
+          <div class="row" >
+          <img src="/media/images/hg2.gif" >
+          jest to add 
+          </div>
+          <div class="row" >
+          <img src="/media/images/hg3.gif" >
+          jest to add 
+          </div>
+          <div class="row" style=>
+          <img src="/media/images/gh4.gif" >
+          jest to add 
+          </div>
+          <div class="row" style=>
+            <img src="/media/images/gh5.gif" >
+            jest to add 
+            </div>
+            <div class="row" style=>
+              <img src="/media/images/gh6.gif" >
+              jest to add 
+              </div>
+        </div>
+      </div>
+      <div class="container col-12 col-sm-6 col-md-8" style="margin-top: 100px;">
+  
+        <div class="container">
+          <span> <H1>HomePage</H1></span>
+          <ul style="list-style: none;">
+            {% for post in posts %}
+            <div class="container">
+              <li>
+                <a style="text-decoration: none; color: #665bfacc;" href="{% url 'details' post.id %}"><h1>{{post.title|upper}}</h1></a> 
+                <small> {{post.user}} <br>{{post.postdate}}</small> <br>
+                {% comment %} {{post.head_image.url}} {% endcomment %}
+                <a href="{% url 'details' post.id %}">
+                <img style="max-width: 100%; max-height: 100%;" src="{{post.head_image.url}}">
+                </a>
+                <br> <hr> 
+                {{post.text|safe|truncatewords:15}} <br> <br>
+                <hr> <hr> <br> <br>
+              </li>
+            </div>
+            
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock content %}
+</body>
+
+</html>
